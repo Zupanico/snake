@@ -1,10 +1,10 @@
-//===============//
-//  Auteur :   Nicolas Garant
-//  Lab :
-//  Fichier :
-//  Date :
-//  But :
-//===============//
+/************************************************************************************
+* Auteur : Nicolas Garant *
+* Nom : snake.h *
+* Date : 30 mars 2021 *
+* Description : L'objet snake implémenté avec un tableau primitif de point et une *
+* taille pouvant se déplacer pour être intégré dans le jeu snake *
+************************************************************************************/
 #include "point.h"
 
 point::point() {
@@ -130,21 +130,14 @@ void point::print(ostream &output) const {
 
 //Calcul de distance entre deux points
 float distance(const point &p1, const point &p2) {
-    return sqrt(pow(p2.getY() - p1.getY(), 2) + pow(p2.getX() - p1.getX(), 2));
+    return sqrt(pow(p2._y - p1._y, 2) + pow(p2._x - p1._x, 2));
 }
 
+//dessine dans la console
 void point::draw(ostream &output) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), _color);
     gotoxy(_x, _y);
     cout << "\xFE";             //on dessine un petit carré, à mettre ds le draw
-}
-
-void point::gotoxy(int xpos, int ypos) {
-    COORD scrn;
-    HANDLE hOuput = GetStdHandle(STD_OUTPUT_HANDLE);
-    scrn.X = xpos;
-    scrn.Y = ypos;
-    SetConsoleCursorPosition(hOuput, scrn);
 }
 
 const point &point::operator=(const point &p) {
@@ -163,9 +156,4 @@ void gotoxy(int xpos, int ypos) {
     SetConsoleCursorPosition(hOuput, scrn);
 }
 
-// Created by nicol on 20/mars/2021.
-//
 
-#include "point.h"
-
-l

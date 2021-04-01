@@ -1,10 +1,10 @@
-//===============//
-//  Auteur :   Nicolas Garant
-//  Lab :
-//  Fichier :
-//  Date :
-//  But :
-//===============//
+/************************************************************************************
+* Auteur : Nicolas Garant *
+* Nom : snake.h *
+* Date : 30 mars 2021 *
+* Description : L'objet snake implémenté avec un tableau primitif de point et une *
+* taille pouvant se déplacer pour être intégré dans le jeu snake *
+************************************************************************************/
 #pragma once
 
 #include "point.h"
@@ -39,11 +39,10 @@ public:
     int getLargeur() const;         //Largeur
     point &getPosition();           //Point
 
-    //Autres
+    //Affichage et lecture
     void draw(ostream &output);             //affichage rectangle
     void read(istream &input);              //lecture cin
     void print(ostream &output) const;      //affichage cout
-    void gotoxy(int xpos, int ypos);        //Placement du curseur au point
 
     //surcharge des opérateurs
     bool operator==(const rectangle &r);    //opérateur ==

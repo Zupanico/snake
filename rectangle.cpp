@@ -1,10 +1,10 @@
-//===============//
-//  Auteur :   Nicolas Garant
-//  Lab :
-//  Fichier :
-//  Date :
-//  But :
-//===============//
+/************************************************************************************
+* Auteur : Nicolas Garant *
+* Nom : snake.h *
+* Date : 30 mars 2021 *
+* Description : L'objet snake implémenté avec un tableau primitif de point et une *
+* taille pouvant se déplacer pour être intégré dans le jeu snake *
+************************************************************************************/
 #include "rectangle.h"
 
 
@@ -50,7 +50,7 @@ int rectangle::getLargeur() const {
     return _l;
 }
 
-point & rectangle::getPosition() {
+point &rectangle::getPosition() {
     return _coord;
 }
 
@@ -84,7 +84,7 @@ void rectangle::setRectangle(int x, int y, int h, int l) {
 
 
 void rectangle::draw(ostream &output) {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), _coord.getColor());
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), _coord.getColor());
     gotoxy(_coord.getX(), _coord.getY());
     for (int i = 0; i < _l; ++i) {
         output << "*";
@@ -99,7 +99,7 @@ void rectangle::draw(ostream &output) {
         output << "*";
     }
 
-    gotoxy(_h - 1, _coord.getY());
+    gotoxy(_coord.getX(), _coord.getY() + _h - 1);
     for (int i = 0; i < _l; ++i) {
         output << "*";
     }
@@ -116,27 +116,27 @@ void rectangle::print(ostream &output) const {
 }
 
 bool rectangle::operator==(const rectangle &r) {
-    return (_l == r._l && _h == r._h && _coord.getY() == r._coord.getY() && _coord.getX() == r._coord.getX());
+    return (surface() == r.surface());
 }
 
 bool rectangle::operator!=(const rectangle &r) {
-    return (_l != r._l && _h != r._h && _coord.getY() != r._coord.getY() && _coord.getX() != r._coord.getX());
+    return (surface() != r.surface());
 }
 
 bool rectangle::operator<(const rectangle &r) {
-    return (_l < r._l && _h < r._h && _coord.getY() < r._coord.getY() && _coord.getX() < r._coord.getX());
+    return (surface() < r.surface());
 }
 
 bool rectangle::operator>(const rectangle &r) {
-    return (_l > r._l && _h > r._h && _coord.getY() > r._coord.getY() && _coord.getX() > r._coord.getX());
+    return (surface() > r.surface());
 }
 
 bool rectangle::operator<=(const rectangle &r) {
-    return (_l <= r._l && _h <= r._h && _coord.getY() <= r._coord.getY() && _coord.getX() <= r._coord.getX());
+    return (surface() <= r.surface());
 }
 
 bool rectangle::operator>=(const rectangle &r) {
-    return (_l >= r._l && _h >= r._h && _coord.getY() >= r._coord.getY() && _coord.getX() >= r._coord.getX());
+    return (surface() >= r.surface());
 }
 
 float rectangle::surface() const {
@@ -147,12 +147,14 @@ float rectangle::perimetre() const {
     return 2 * (_h + _l);
 }
 
-void rectangle::gotoxy(int xpos, int ypos) {
-    COORD scrn;
-    HANDLE hOuput = GetStdHandle(STD_OUTPUT_HANDLE);
-    scrn.X = xpos;
-    scrn.Y = ypos;
-    SetConsoleCursorPosition(hOuput, scrn);
+istream &operator>>(istream &input, rectangle &r) {
+    r.read(input);
+    return input;
+}
+
+ostream &operator<<(ostream &output, const rectangle &r) {
+    r.print(output);
+    return output;
 }
 
 void ligne(rectangle r, int nb) {
@@ -176,12 +178,4 @@ void grille(rectangle r, int nb) {
     }
 }
 
-istream &operator>>(istream &input, rectangle &r) {
-    r.read(input);
-    return input;
-}
 
-ostream &operator<<(ostream &output, const rectangle &r) {
-    r.print(output);
-    return output;
-}

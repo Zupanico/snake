@@ -1,10 +1,10 @@
-//===============//
-//  Auteur :   Nicolas Garant
-//  Lab :
-//  Fichier :
-//  Date :
-//  But :
-//===============//
+/************************************************************************************
+* Auteur : Nicolas Garant *
+* Nom : snake.h *
+* Date : 30 mars 2021 *
+* Description : L'objet snake implémenté avec un tableau primitif de point et une *
+* taille pouvant se déplacer pour être intégré dans le jeu snake *
+************************************************************************************/
 #pragma once
 
 #include <iostream>
@@ -58,10 +58,11 @@ public:
     //autres méthodes
     void read(istream &input);          //lecture cin
     void print(ostream &output) const;  //affichage cout
-    friend float distance(const point &p1, const point &p2);//calcul de distance
     void draw(ostream &output);         //affiche le point
-    void gotoxy(int xpos, int ypos);    //placer le curseur dans la console
+    friend float distance(const point &p1, const point &p2);//calcul de distance
 };
+
+void gotoxy(int xpos, int ypos);        //Placement du curseur au point
 
 istream &operator>>(istream &input, point &p);      //opérateur >>
 ostream &operator<<(ostream &output, const point &p);     //opérateur <<
