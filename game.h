@@ -13,7 +13,7 @@
 #include <conio.h>
 #include "rectangle.h"
 #include "game.h"
-#include "apple.h"
+#include "pomme.h"
 #include "snake.h"
 #include <windows.h>
 #include <time.h>
