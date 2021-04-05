@@ -13,8 +13,9 @@ void game::play() {
     while (!_lose) {
 
         printScore(cout);
+        printLive(cout);
         inputKey();
-
+        _ekans.move(_dir);
         if (_dir != STOP) {
             pos = _ekans.nouvellePosition(_dir);
             if (!canMove(pos)) {
@@ -60,6 +61,7 @@ void game::inputKey() {
                     break;
                 case 77:
                     _dir = RIGHT;
+                    break;
             }
 
         }
@@ -113,8 +115,8 @@ point game::randPosition() const {
     //Vérification que le rand n'est pas la position du snake
     for (int i = 0; i < _ekans.getTaille(); ++i) {
         if (x == _ekans.getPosition(i).getX() && y == _ekans.getPosition(i).getY()) {
-            x = rand() % 39 + 1;    //Position random
-            y = rand() % 19 + 1;
+            x = rand() % 38 + 2;    //Position random
+            y = rand() % 18 + 2;
         }
     }
 
@@ -128,11 +130,9 @@ void game::createApple() {
 }
 
 bool game::canMove(const point &p) const {
-    bool game::canMove(const point& p) const {
-   
     if (_ekans.ifCollision(p)) {
 
-        if ((_ekans[0].getX() == 0 || 40) || (_ekans[0].getY() == 0 || 20)) {
+        if ((_ekans[0].getX() == (0 || 40)) || (_ekans[0].getY() == (0 || 20))) {
 
             return false;
         }
@@ -140,7 +140,7 @@ bool game::canMove(const point &p) const {
 
     return true;
 }
-}
+
 
 int game::getScore() const {
     return _score;
