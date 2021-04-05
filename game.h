@@ -27,7 +27,7 @@ private:
     _cptLive,               //le compteur de vie
     _score;                 //le score de la game
     snake _bob;             //le snake
-    apple _apple;           //la pomme
+    pomme _pomme;           //la pomme
     rectangle _plateau;     //rectangle du terrain de jeu
     const int _width = 40;  //dimension du terrain de jeu
     const int _height = 20;
