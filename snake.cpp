@@ -80,6 +80,7 @@ point snake::nouvellePosition(int dir) {
             break;
         case 4:
             newHead.setY(newHead.getY() + 1);
+            break;
     }
     return newHead;
 }
@@ -87,13 +88,10 @@ point snake::nouvellePosition(int dir) {
 //	Méthode collision du serpent;
 bool snake::ifCollision(const point &pos) const {
     for (int i = 0; i < _taille; i++) {
-
         if (pos == _snake[i]) {
-
             return true;
         }
     }
-
     return false;
 }
 
@@ -102,9 +100,12 @@ void snake::move(int dir) {
     point newHead = nouvellePosition(dir);
 
     for (int i = _taille - 1; i >= 0; --i) {
+        _snake[i].setColor(6);
         _snake[i + 1] = _snake[i];
+
     }
     _snake[0] = newHead;
+    _snake[_taille].setColor(0);
 }
 
 void snake::eat(int dir) {
@@ -115,11 +116,13 @@ void snake::eat(int dir) {
 //	Operator draw;
 void snake::draw(ostream &output) const {
     for (int i = 0; i < _taille; i++) {
-
         gotoxy(_snake[i].getX(), _snake[i].getY());
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
         output << "\xFE";
     }
+    gotoxy(_snake[_taille - 1].getX(), _snake[_taille - 1].getY());
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
+    output << "\xFE";
 }
 
 //	Operator cout;

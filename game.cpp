@@ -15,12 +15,14 @@ void game::play() {
         printScore(cout);
         printLive(cout);
         inputKey();
-        _ekans.move(_dir);
+
         if (_dir != STOP) {
+            _ekans.move(_dir);
             pos = _ekans.nouvellePosition(_dir);
-            if (!canMove(pos)) {
+            if (!canMove(pos) || _ekans.ifCollision(pos)) {
                 _cptLive--;
                 printLive(cout);
+                _ekans.initialize(20, 7);
                 if (_cptLive == 0) {
                     _lose = true;
                 }
@@ -33,6 +35,7 @@ void game::play() {
                 _ekans.nouvellePosition(_dir);
             }
             _ekans.draw(cout);
+            _pomme.draw(cout);
             Sleep(100);
         }
     }
@@ -93,7 +96,7 @@ game::~game() {
 //initalise le jeu
 void game::initialize() {
     _lose = false;
-    _dir = NONE;
+    _dir = STOP;
     _cptLive = 3;
     _score = 0;
     _ekans.initialize(20, 7);
@@ -114,7 +117,7 @@ point game::randPosition() const {
 
     //Vérification que le rand n'est pas la position du snake
     for (int i = 0; i < _ekans.getTaille(); ++i) {
-        if (x == _ekans.getPosition(i).getX() && y == _ekans.getPosition(i).getY()) {
+        if (x == _ekans[i].getX() && y == _ekans[i].getY()) {
             x = rand() % 38 + 2;    //Position random
             y = rand() % 18 + 2;
         }
@@ -126,18 +129,12 @@ point game::randPosition() const {
 
 void game::createApple() {
     _pomme.setPosition(randPosition().getX(), randPosition().getY());
-    _pomme.draw(cout);
 }
 
 bool game::canMove(const point &p) const {
-    if (_ekans.ifCollision(p)) {
-
-        if ((_ekans[0].getX() == (0 || 40)) || (_ekans[0].getY() == (0 || 20))) {
-
-            return false;
-        }
+    if ((_ekans[0].getX() == 0 || _ekans[0].getX() == 40) || (_ekans[0].getY() == 0 || _ekans[0].getY() == 20)) {
+        return false;
     }
-
     return true;
 }
 
