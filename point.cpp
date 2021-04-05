@@ -68,7 +68,7 @@ void point::setY(int y) {
 
 //setteur de couleur
 void point::setColor(int color) {
-    assert(color >= 1 && color <= 15);
+    assert(color >= 0 && color <= 15);
     _color = color;
 }
 

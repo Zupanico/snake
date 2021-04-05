@@ -7,7 +7,6 @@
 
 void game::play() {
     //Variables
-    game g;
     point pos;
 
     initialize();
@@ -99,15 +98,17 @@ void game::initialize() {
     _plateau.setLargeur(_width);
     _plateau.setHauteur(_height);
     _plateau.draw(cout);
+    createApple();
 }
 
 //génère une nouvelle position aléatoire ds le terrain
 point game::randPosition() const {
     point p;
     int x, y;
+    srand(time(NULL));
 
-    x = rand() % 39 + 1;    //Position random
-    y = rand() % 19 + 1;
+    x = rand() % 38 + 2;    //Position random
+    y = rand() % 18 + 2;
 
     //Vérification que le rand n'est pas la position du snake
     for (int i = 0; i < _ekans.getTaille(); ++i) {
@@ -123,6 +124,7 @@ point game::randPosition() const {
 
 void game::createApple() {
     _pomme.setPosition(randPosition().getX(), randPosition().getY());
+    _pomme.draw(cout);
 }
 
 bool game::canMove(const point &p) const {
@@ -134,14 +136,20 @@ int game::getScore() const {
 }
 
 void game::printScore(ostream &output) const {
-    output << "Score : " << _score << endl;
+    gotoxy(0, 22);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    output << endl << "Score : " << _score << endl;
 }
 
 void game::printLive(ostream &output) const {
-    output << "Vies restantes : " << _cptLive << endl;
+    gotoxy(0, 23);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    output << endl << "Vies restantes : " << _cptLive << endl;
 }
 
 void game::printEndGame(ostream &ouput) const {
-    ouput << "Game Over" << endl << "Score : " << _score;
+    gotoxy(0, 24);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    ouput << endl << "Game Over" << endl << "Score : " << _score;
 }
 
