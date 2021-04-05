@@ -112,14 +112,14 @@ point game::randPosition() const {
     int x, y;
     srand(time(NULL));
 
-    x = rand() % 38 + 2;    //Position random
-    y = rand() % 18 + 2;
+    x = rand() % 37 + 2;    //Position random
+    y = rand() % 17 + 2;
 
     //Vérification que le rand n'est pas la position du snake
     for (int i = 0; i < _ekans.getTaille(); ++i) {
         if (x == _ekans[i].getX() && y == _ekans[i].getY()) {
-            x = rand() % 38 + 2;    //Position random
-            y = rand() % 18 + 2;
+            x = rand() % 37 + 2;    //Position random
+            y = rand() % 17 + 2;
         }
     }
 
