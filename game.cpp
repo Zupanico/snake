@@ -4,6 +4,14 @@
 
 #include "game.h"
 
+game::game() {
+    _lose = false;
+    _dir = NONE;
+    _cptLive = 3;
+    _score = 0;
+
+}
+
 void game::play() {
     //Variables
     game g;
@@ -64,5 +72,6 @@ void game::inputKey() {
         }
     }
 }
+
 
 

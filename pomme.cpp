@@ -48,7 +48,7 @@ void pomme::setPosition(int x, int y) {
 //	Dessine la pomme;
 void pomme::draw(ofstream &output) const {
     gotoxy(_pomme.getX(), _pomme.getY());
-    cout << "\XEF";
+    cout << "\xEF";
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
 }
 
