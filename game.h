@@ -46,6 +46,6 @@ public:
     int getScore() const;       //retourne le score (seule info qui pourrait être intéressante
     //de l’extérieur) et aucun setteur pour cet objet.
     void printScore(ostream &sortie) const;     //affiche le score
-    void printLive(ostream &sortie) const;      //affiche le compteur de vie
-    void printEndGame(ostream &sortie) const;   //affiche game over et le score
+    void printLive(ostream &output) const;      //affiche le compteur de vie
+    void printEndGame(ostream &ouput) const;   //affiche game over et le score
 };

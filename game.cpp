@@ -93,11 +93,12 @@ game::~game() {
 void game::initialize() {
     _lose = false;
     _dir = NONE;
-    _cptLive = 0;
+    _cptLive = 3;
     _score = 0;
     _ekans.initialize(20, 7);
     _plateau.setLargeur(_width);
     _plateau.setHauteur(_height);
+    _plateau.draw(cout);
 }
 
 //génère une nouvelle position aléatoire ds le terrain
@@ -126,5 +127,21 @@ void game::createApple() {
 
 bool game::canMove(const point &p) const {
     return (!(_ekans.ifCollision(p)));
+}
+
+int game::getScore() const {
+    return _score;
+}
+
+void game::printScore(ostream &output) const {
+    output << "Score : " << _score << endl;
+}
+
+void game::printLive(ostream &output) const {
+    output << "Vies restantes : " << _cptLive << endl;
+}
+
+void game::printEndGame(ostream &ouput) const {
+    ouput << "Game Over" << endl << "Score : " << _score;
 }
 
