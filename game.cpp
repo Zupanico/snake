@@ -127,20 +127,15 @@ void game::createApple() {
     _pomme.draw(cout);
 }
 
-bool game::canMove(const point &p) const {
-    bool game::canMove(const point& p) const {
-   
+bool game::canMove(const point& p) const {
     if (_ekans.ifCollision(p)) {
-
         if ((_ekans[0].getX() == 0 || 40) || (_ekans[0].getY() == 0 || 20)) {
-
             return false;
         }
     }
-
     return true;
 }
-}
+
 
 int game::getScore() const {
     return _score;
