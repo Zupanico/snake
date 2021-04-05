@@ -4,13 +4,6 @@
 
 #include "game.h"
 
-game::game() {
-    _lose = false;
-    _dir = NONE;
-    _cptLive = 3;
-    _score = 0;
-
-}
 
 void game::play() {
     //Variables
@@ -24,7 +17,7 @@ void game::play() {
         inputKey();
 
         if (_dir != STOP) {
-            pos = _bob.newPosition(_dir);
+            pos = _ekans.newPosition(_dir);
             if (!canMove(pos)) {
                 _cptLive--;
                 printLive(cout);
@@ -32,14 +25,14 @@ void game::play() {
                     _lose = true;
                 }
             } else if (pos == _pomme.getPosition()) {
-                _bob.eat(_dir);
+                _ekans.eat(_dir);
                 _score++;
                 printScore(cout);
                 createApple();
             } else {
-                _bob.newPosition(_dir);
+                _ekans.newPosition(_dir);
             }
-            _bob.draw(cout);
+            _ekans.draw(cout);
             Sleep(100);
         }
     }
@@ -69,9 +62,69 @@ void game::inputKey() {
                 case 77:
                     _dir = RIGHT;
             }
+
         }
     }
 }
 
+//initialise les types primitifs à 0
+game::game() {
+    _lose = false;
+    _dir = NONE;
+    _cptLive = 3;
+    _score = 0;
+    _ekans.initialize(20, 7);
+    _plateau.setLargeur(_width);
+    _plateau.setHauteur(_height);
+}
 
+//initialise les types primitifs à 0
+game::~game() {
+    _lose = false;
+    _dir = NONE;
+    _cptLive = 0;
+    _score = 0;
+    _ekans.initialize(0, 0);
+    _plateau.setLargeur(0);
+    _plateau.setHauteur(0);
+}
+
+//initalise le jeu
+void game::initialize() {
+    _lose = false;
+    _dir = NONE;
+    _cptLive = 0;
+    _score = 0;
+    _ekans.initialize(20, 7);
+    _plateau.setLargeur(_width);
+    _plateau.setHauteur(_height);
+}
+
+//génère une nouvelle position aléatoire ds le terrain
+point game::randPosition() const {
+    point p;
+    int x, y;
+
+    x = rand() % 39 + 1;    //Position random
+    y = rand() % 19 + 1;
+
+    //Vérification que le rand n'est pas la position du snake
+    for (int i = 0; i < _ekans.getTaille(); ++i) {
+        if (x == _ekans.getPosition(i).getX() && y == _ekans.getPosition(i).getY()) {
+            x = rand() % 39 + 1;    //Position random
+            y = rand() % 19 + 1;
+        }
+    }
+
+    p.setPosition(x, y);
+    return p;
+}
+
+void game::createApple() {
+    _pomme.setPosition(randPosition().getX(), randPosition().getY());
+}
+
+bool game::canMove(const point &p) const {
+    return (!(_ekans.ifCollision(p)));
+}
 

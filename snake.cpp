@@ -8,6 +8,20 @@
 
 #include "snake.h"
 
+
+snake::snake() {
+    _taille = 6;
+}
+
+snake::snake(int x, int y) {
+
+}
+
+void snake::initialize(int x, int y) {
+
+}
+
+
 point snake::newPosition(int dir) {
     point newHead = _snake[0];
 
@@ -29,10 +43,11 @@ point snake::newPosition(int dir) {
 
 void snake::move(int dir) {
     point newHead = newPosition(dir);
-    for (int i = _size - 1; i >= 0; --i) {
+    for (int i = _taille - 1; i >= 0; --i) {
         _snake[i + 1] = _snake[i];
     }
     _snake[0] = newHead;
 }
+
 
 

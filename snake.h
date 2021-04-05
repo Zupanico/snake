@@ -18,16 +18,16 @@ using namespace std;
 class snake {
 private:
     point _snake[800];          //tableau pour toutes les positions du snake
-    int _size;                  //taille réel du snake
+    int _taille;                //taille réel du snake
 public:
     snake();                    //initialise le snake à l’origine, à partir d’une
     snake(int x, int y);        //position ou d’une coordonnée x, y et de taille 6
-    ~snake();                   //remet le _size à 0
+    ~snake();                   //remet le _taille à 0
     void initialize(int x, int y);              //setteurs appelés par les constructeurs qui initialise
     const point &getHeadPosition() const;       //retourne la position de la tête du snake
     const point &getPosition(int ind) const;    //retourne la position à l’indice reçue
     const point &operator[](int ind) const;     //opérateur qui appelle getteur de position
-    int getSize() const;                        //retourne la taille du snake
+    int getTaille() const;                      //retourne la taille du snake
     point newPosition(int dir);                 //retourne la nouvelle position selon la direction
     bool ifCollision(const point &pos) const;   //retourne vrai si la position reçue est en
     //collision avec une des positions du snake

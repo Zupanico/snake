@@ -26,7 +26,7 @@ private:
     int _dir,               //la direction choisie
     _cptLive,               //le compteur de vie
     _score;                 //le score de la game
-    snake _bob;             //le snake
+    snake _ekans;           //le snake
     pomme _pomme;           //la pomme
     rectangle _plateau;     //rectangle du terrain de jeu
     const int _width = 40;  //dimension du terrain de jeu
@@ -35,15 +35,15 @@ private:
         STOP, LEFT, RIGHT, UP, DOWN, NONE
     };
 public:
-    game();                 //initialise les types primitifs à 0
-    ~game();                //initialise les types primitifs à 0
-    void initialize();      //initalise le jeu
+    game();                     //initialise les types primitifs à 0
+    ~game();                    //initialise les types primitifs à 0
+    void initialize();          //initalise le jeu
     point randPosition() const; //génère une nouvelle position aléatoire ds le terrain
-    void createApple();     //génère une nouvelle pomme tq position est ds le snake
-    void play();            //la main loop du jeu
-    void inputKey();        //la saisie des touches pour le déplacement du snake
+    void createApple();         //génère une nouvelle pomme tq position est ds le snake
+    void play();                //la main loop du jeu
+    void inputKey();            //la saisie des touches pour le déplacement du snake
     bool canMove(const point &p) const;//retourne vrai si la tête du snake peut bouger
-    int getScore() const;   //retourne le score (seule info qui pourrait être intéressante
+    int getScore() const;       //retourne le score (seule info qui pourrait être intéressante
     //de l’extérieur) et aucun setteur pour cet objet.
     void printScore(ostream &sortie) const;     //affiche le score
     void printLive(ostream &sortie) const;      //affiche le compteur de vie
