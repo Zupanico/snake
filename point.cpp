@@ -81,12 +81,12 @@ void point::setPosition(int x, int y) {
 }
 
 //surcharge d'opérateur ==
-bool point::operator==(const point &p) {
+bool point::operator==(const point &p) const {
     return (_x == p._x && _y == p._y);
 }
 
 //surcharge d'opérateur !=
-bool point::operator!=(const point &p) {
+bool point::operator!=(const point &p) const {
     return (_x != p._x && _y != p._y);
 }
 

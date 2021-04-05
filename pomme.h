@@ -36,7 +36,7 @@ public:
     void setPosition(int x, int y);            //	Setteur de la position de la pomme;
 
     //	Autre Méthode;
-    void draw(ofstream &output) const;        //	Dessine la pomme;
+    void draw(ostream &output) const;        //	Dessine la pomme;
 
 };
 

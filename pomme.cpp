@@ -46,7 +46,7 @@ void pomme::setPosition(int x, int y) {
 }
 
 //	Dessine la pomme;
-void pomme::draw(ofstream &output) const {
+void pomme::draw(ostream &output) const {
     gotoxy(_pomme.getX(), _pomme.getY());
     cout << "\xEF";
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
@@ -54,6 +54,6 @@ void pomme::draw(ofstream &output) const {
 
 //	Operator output;
 ostream &operator<<(ostream &output, const pomme &p) {
-    //p.draw(output);
+    p.draw(output);
     return output;
 }

@@ -46,8 +46,8 @@ public:
     void setPosition(int x, int y);//setteur de postition
 
     //surcharge des opérateurs
-    bool operator==(const point &p);    //opérateur ==
-    bool operator!=(const point &p);    //opérateur !=
+    bool operator==(const point &p) const;    //opérateur ==
+    bool operator!=(const point &p) const;    //opérateur !=
     const point &operator=(const point &p);//opérateur=
 
     point operator+(const point &p);    //opérateur +

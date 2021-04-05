@@ -17,7 +17,7 @@ void game::play() {
         inputKey();
 
         if (_dir != STOP) {
-            pos = _ekans.newPosition(_dir);
+            pos = _ekans.nouvellePosition(_dir);
             if (!canMove(pos)) {
                 _cptLive--;
                 printLive(cout);
@@ -30,7 +30,7 @@ void game::play() {
                 printScore(cout);
                 createApple();
             } else {
-                _ekans.newPosition(_dir);
+                _ekans.nouvellePosition(_dir);
             }
             _ekans.draw(cout);
             Sleep(100);
