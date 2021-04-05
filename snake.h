@@ -1,14 +1,17 @@
-/************************************************************************************
-* Auteur : Nicolas Garant *
-* Nom : snake.h *
-* Date : 30 mars 2021 *
-* Description : L'objet snake implémenté avec un tableau primitif de point et une *
-* taille pouvant se déplacer pour être intégré dans le jeu snake *
-************************************************************************************/
-//Directives aux préprocesseurs
+/* En-tête de programme
+ ==========================================
+Programme:		point.h
+Acteur:			Frederick Perazzelli-Delorme et Nicolas Garant
+Date de création:
+But du programme:	Méthodes et prototypes de l'objet pomme;
+====================================================== */
+
+/* directive au pré-processeur
+-------------------------------*/
 #pragma once
 
 #include "point.h"
+#include "pomme.h"
 #include <iostream>
 #include <assert.h>
 #include <windows.h>
@@ -16,25 +19,36 @@
 using namespace std;
 
 class snake {
-private:
-    point _snake[800];          //tableau pour toutes les positions du snake
-    int _taille;                //taille réel du snake
-public:
-    snake();                    //initialise le snake à l’origine, à partir d’une
-    snake(int x, int y);        //position ou d’une coordonnée x, y et de taille 6
-    ~snake();                   //remet le _taille à 0
-    void initialize(int x, int y);              //setteurs appelés par les constructeurs qui initialise
-    const point &getHeadPosition() const;       //retourne la position de la tête du snake
-    const point &getPosition(int ind) const;    //retourne la position à l’indice reçue
-    const point &operator[](int ind) const;     //opérateur qui appelle getteur de position
-    int getTaille() const;                      //retourne la taille du snake
-    point newPosition(int dir);                 //retourne la nouvelle position selon la direction
-    bool ifCollision(const point &pos) const;   //retourne vrai si la position reçue est en
-    //collision avec une des positions du snake
-    void move(int dir);                         //avance le snake dans la bonne direction
-    void eat(int dir);                          //avance et mange une pomme dans la direction
-    void draw(ostream &sortie) const;           //draw le snake
+
+    private:
+
+        point _snake[300];                          //tableau pour les positions du serpent
+
+        int _taille;                                //taille du serpent
+
+    public:
+        snake();                                    //Initialise la position du snake au milieu de la console, (20,7) taille 6;
+        snake(int x, int y);                        //Initialise la position du snake avec des données recu (x,y), taille 6;
+
+        ~snake();                                   //Remet la taille a 0;
+
+        void initialize(int x, int y);              //Setteur
+       
+        const point& getHeadPosition() const;       //retourne la tête du serpent
+        const point& getPosition(int ind) const;    //Retourne la position (coordonées) d'une des parties du serpent;
+        const point& operator[](int ind) const;     //Apelle le getteur de la position
+        int getTaille() const;                      //retourne la taille du serpent
+
+        point nouvellePosition(int dir);            //retourne la nouvelle position selon la direction
+
+        bool ifCollision(const point& pos) const;   //Retourne vrai si la position recu est en collision avec une position du serpent;
+                                                    
+
+        void move(int dir);                         //avance le snake dans la bonne direction
+        void eat(int dir);                          //avance et mange une pomme dans la direction
+
+        void draw(ostream& output) const;           //draw le snake
 };
 
-ostream &operator<<(ostream &sortie, const snake &s);
+ostream& operator<<(ostream& output, const snake& s);
 
