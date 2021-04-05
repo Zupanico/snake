@@ -137,6 +137,7 @@ void snake::draw(ostream& output) const
 //	Operator cout;
 ostream& operator<<(ostream& output, const snake& s)
 {
+	s.draw(output);
 	return output;
 }
 
