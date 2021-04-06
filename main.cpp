@@ -21,6 +21,7 @@
 
 int main() {
     game g;
+  //  while (g.inputKey(g._ekans._dir)!=)
     g.play();
     return 0;
 }

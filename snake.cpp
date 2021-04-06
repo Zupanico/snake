@@ -129,5 +129,3 @@ void snake::draw(ostream &output) const {
 ostream &operator<<(ostream &output, const snake &s) {
     return output;
 }
-
-

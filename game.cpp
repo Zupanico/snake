@@ -17,12 +17,11 @@ void game::play() {
         inputKey();
 
         if (_dir != STOP) {
-            _ekans.move(_dir);
             pos = _ekans.nouvellePosition(_dir);
             if (!canMove(pos) || _ekans.ifCollision(pos)) {
+                _ekans.initialize(20, 7);
                 _cptLive--;
                 printLive(cout);
-                _ekans.initialize(20, 7);
                 if (_cptLive == 0) {
                     _lose = true;
                 }
@@ -33,8 +32,9 @@ void game::play() {
                 createApple();
             } else {
                 _ekans.nouvellePosition(_dir);
+                _ekans.move(_dir);
             }
-            _ekans.draw(cout);
+
             _pomme.draw(cout);
             Sleep(100);
         }
@@ -132,7 +132,7 @@ void game::createApple() {
 }
 
 bool game::canMove(const point &p) const {
-    if ((_ekans[0].getX() == 0 || _ekans[0].getX() == 40) || (_ekans[0].getY() == 0 || _ekans[0].getY() == 20)) {
+    if ((_ekans[0].getX() == 0 || _ekans[0].getX() >= 40) || (_ekans[0].getY() == 0 || _ekans[0].getY() >= 20)) {
         return false;
     }
     return true;
@@ -160,4 +160,3 @@ void game::printEndGame(ostream &ouput) const {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     ouput << endl << "Game Over" << endl << "Score : " << _score;
 }
-
