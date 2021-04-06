@@ -1,0 +1,49 @@
+{
+  "configurations": [
+    {
+      "directories": [
+        {
+          "build": ".",
+          "minimumCMakeVersion": {
+            "string": "3.17"
+          },
+          "projectIndex": 0,
+          "source": ".",
+          "targetIndexes": [
+            0
+          ]
+        }
+      ],
+      "name": "Debug",
+      "projects": [
+        {
+          "directoryIndexes": [
+            0
+          ],
+          "name": "snake",
+          "targetIndexes": [
+            0
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "directoryIndex": 0,
+          "id": "snake::@6890427a1f51a3e7e1df",
+          "jsonFile": "target-snake-Debug-1a148f3f3cdb7afb8246.json",
+          "name": "snake",
+          "projectIndex": 0
+        }
+      ]
+    }
+  ],
+  "kind": "codemodel",
+  "paths": {
+    "build": "C:/Users/nicol/Documents/C++/snake/out/build/x64-Debug (par défaut)",
+    "source": "C:/Users/nicol/Documents/C++/snake"
+  },
+  "version": {
+    "major": 2,
+    "minor": 0
+  }
+}

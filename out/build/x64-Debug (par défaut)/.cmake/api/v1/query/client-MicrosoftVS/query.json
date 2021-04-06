@@ -1,0 +1,16 @@
+{
+  "requests": [
+    {
+      "kind": "cache",
+      "version": 2
+    },
+    {
+      "kind": "cmakeFiles",
+      "version": 1
+    },
+    {
+      "kind": "codemodel",
+      "version": 2
+    }
+  ]
+}

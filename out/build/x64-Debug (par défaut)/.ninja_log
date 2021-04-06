@@ -1,0 +1,19 @@
+# ninja log v5
+1	815	639372989	CMakeFiles/snake.dir/main.cpp.obj	9c83ca26ec5bde61
+1	972	639376446	CMakeFiles/snake.dir/snake.cpp.obj	e5122dfeaac7306e
+5	1212	639372155	CMakeFiles/snake.dir/point.cpp.obj	e086377d9bcb835b
+0	1075	639377791	CMakeFiles/snake.dir/game.cpp.obj	767a4b6b9e943779
+0	924	639352537	CMakeFiles/snake.dir/pomme.cpp.obj	b487c5e4b3959aeb
+10	1250	639339641	CMakeFiles/snake.dir/rectangle.cpp.obj	2b0f2614542d942f
+1079	1275	639377792	snake.exe	dac4e5378631d9c5
+4	1112	639377961	CMakeFiles/snake.dir/game.cpp.obj	767a4b6b9e943779
+1	1117	639377961	CMakeFiles/snake.dir/snake.cpp.obj	e5122dfeaac7306e
+1135	1293	639377961	snake.exe	dac4e5378631d9c5
+1	1091	639377998	CMakeFiles/snake.dir/game.cpp.obj	767a4b6b9e943779
+1094	1289	639377998	snake.exe	dac4e5378631d9c5
+1	1205	639378695	CMakeFiles/snake.dir/game.cpp.obj	767a4b6b9e943779
+1208	1353	639378695	snake.exe	dac4e5378631d9c5
+0	868	639378748	CMakeFiles/snake.dir/snake.cpp.obj	e5122dfeaac7306e
+870	1011	639378748	snake.exe	dac4e5378631d9c5
+0	947	639379149	CMakeFiles/snake.dir/snake.cpp.obj	e5122dfeaac7306e
+950	1087	639379149	snake.exe	dac4e5378631d9c5
