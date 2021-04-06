@@ -104,6 +104,8 @@ void game::initialize() {
     _plateau.setHauteur(_height);
     _plateau.draw(cout);
     createApple();
+    //game();
+    //drawScreen(cout);
 }
 
 //génère une nouvelle position aléatoire ds le terrain
@@ -166,7 +168,8 @@ void game::drawScreen(ostream &output) {
     printScore(output);
     printLive((output));
     _ekans.initialize(20, 7);
-    _plateau.print(output);
+    _dir = NONE;
+    _plateau.draw(output);
     _ekans.draw(output);
     createApple();
 }

@@ -40,7 +40,7 @@ snake::~snake() {
 
 //	Initialise le serpent
 void snake::initialize(int x, int y) {
-    snake(x, y);
+    snake s(x, y);
 }
 
 // Renvoie la tête du serpent
