@@ -47,5 +47,6 @@ public:
     //de l’extérieur) et aucun setteur pour cet objet.
     void printScore(ostream &sortie) const;     //affiche le score
     void printLive(ostream &output) const;      //affiche le compteur de vie
-    void printEndGame(ostream &ouput) const;   //affiche game over et le score
+    void printEndGame(ostream &ouput) const;    //affiche game over et le score
+    void drawScreen(ostream &output);           //Affiche tout les éléments à l'écran
 };
