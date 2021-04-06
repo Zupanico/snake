@@ -34,7 +34,7 @@ void game::play() {
                 _ekans.nouvellePosition(_dir);
                 _ekans.move(_dir);
             }
-
+            _ekans.draw(cout);
             _pomme.draw(cout);
             Sleep(100);
         }

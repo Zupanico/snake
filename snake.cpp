@@ -35,7 +35,6 @@ snake::snake(int x, int y) {
 
 //	Destructeur du snake
 snake::~snake() {
-    _snake[0].setPosition(0, 0);
     _taille = 0;
 }
 
