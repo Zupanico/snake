@@ -1,19 +1,9 @@
-/* En-tête de programme
- ==========================================
-Programme:		point.h
-Acteur:			Frederick Perazzelli-Delorme et Nicolas Garant
-Date de création:
-But du programme:	
-====================================================== */
-
 /* directive au pré-processeur
 -------------------------------*/
 #include "snake.h"
-#include "point.h"
+
 
 //	Constructeur du serpent par défaut
-
-
 snake::snake()
 {
     _snake[0].setPosition(20, 7);
@@ -43,7 +33,13 @@ snake::~snake() {
 
 //	Initialise le serpent
 void snake::initialize(int x, int y) {
-    snake(x, y);
+    _snake[0].setPosition(x, y);
+    _snake[1].setPosition(x + 1, y);
+    _snake[2].setPosition(x + 2, y);
+    _snake[3].setPosition(x + 3, y);
+    _snake[4].setPosition(x + 4, y);
+    _snake[5].setPosition(x + 5, y);
+    _taille = 6;
 }
 
 // Renvoie la tête du serpent
@@ -113,6 +109,7 @@ void snake::move(int dir) {
     _snake[_taille].setColor(0);
 }
 
+// Si le serpent mange la pomme
 void snake::eat(int dir) {
 
     move(dir);
