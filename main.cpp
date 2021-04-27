@@ -7,21 +7,15 @@
 * mais attention de ne pas toucher les côté ou le snake lui-même *
 *************************************************************************************/
 //Directives aux préprocesseurs
-#pragma once
 
-#include <conio.h>
-#include "rectangle.h"
 #include "game.h"
-#include "pomme.h"
-#include "point.h"
-#include "snake.h"
-#include <windows.h>
-#include <time.h>
 #include <iostream>
 
 int main() {
     game g;
-  //  while (g.inputKey(g._ekans._dir)!=)
+
     g.play();
+
+    system("pause");
     return 0;
 }

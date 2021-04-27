@@ -50,15 +50,15 @@ public:
     bool operator!=(const point &p) const;    //opérateur !=
     const point &operator=(const point &p);//opérateur=
 
-    point operator+(const point &p);    //opérateur +
-    point operator-(const point &p);    //opérateur -
+    point operator+(const point &p) const;    //opérateur +
+    point operator-(const point &p) const;    //opérateur -
     //operator>>
     //operator<<
 
     //autres méthodes
     void read(istream &input);          //lecture cin
     void print(ostream &output) const;  //affichage cout
-    void draw(ostream &output);         //affiche le point
+    void draw(ostream &output) const;         //affiche le point
     friend float distance(const point &p1, const point &p2);//calcul de distance
 };
 

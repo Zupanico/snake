@@ -14,15 +14,17 @@ But du programme:	Méthodes et prototypes de l'objet pomme;
 
 //	Construteur pomme par défaut;
 pomme::pomme() {
-    _pomme.setX(0);
-    _pomme.setY(0);
+//    _pomme.setX(0);
+//    _pomme.setY(0);
+    _pomme.setPosition(0, 0);
     _pomme.setColor(4);
 }
 
 //	Constructeur pomme avec variable;
 pomme::pomme(int x, int y) {
-    _pomme.setX(x);
-    _pomme.setY(y);
+//    _pomme.setX(x);
+//    _pomme.setY(y);
+    _pomme.setPosition(x, y);
     _pomme.setColor(4);
 }
 
@@ -34,9 +36,10 @@ pomme::~pomme() {
 }
 
 //	Getteur de pomme;
-const point &pomme::getPosition() {
+const point &pomme::getPosition() const {
     return _pomme;
 }
+
 
 //	Setteur de pomme;
 void pomme::setPosition(int x, int y) {
@@ -47,9 +50,10 @@ void pomme::setPosition(int x, int y) {
 
 //	Dessine la pomme;
 void pomme::draw(ostream &output) const {
-    gotoxy(_pomme.getX(), _pomme.getY());
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-    cout << "\xFE";
+    _pomme.draw(output);
+//    gotoxy(_pomme.getX(), _pomme.getY());
+//    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+//    cout << "\xFE";
 }
 
 //	Operator output;

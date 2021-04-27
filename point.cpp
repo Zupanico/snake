@@ -91,18 +91,18 @@ bool point::operator!=(const point &p) const {
 }
 
 //surcharge d'opérateur +
-point point::operator+(const point &p) {
+point point::operator+(const point &p) const {
 
-    _x = _x + p._x;
-    _y = _y + p._y;
-    return *this;
+//    _x = _x + p._x;
+//    _y = _y + p._y;
+    return point(_x + p._x, _y + p._y);
 }
 
 //surcharge d'opérateur -
-point point::operator-(const point &p) {
-    _x = _x - p._x;
-    _y = _y - p._y;
-    return *this;
+point point::operator-(const point &p) const {
+//    _x = _x - p._x;
+//    _y = _y - p._y;
+    return point(_x - p._x, _y - p._y);
 }
 
 //surcharge d'opérateur >>
@@ -134,7 +134,7 @@ float distance(const point &p1, const point &p2) {
 }
 
 //dessine dans la console
-void point::draw(ostream &output) {
+void point::draw(ostream &output) const {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), _color);
     gotoxy(_x, _y);
     cout << "\xFE";             //on dessine un petit carré, à mettre ds le draw

@@ -4,25 +4,13 @@
 
 
 //	Constructeur du serpent par défaut
-snake::snake()
-{
-    _snake[0].setPosition(20, 7);
-    _snake[1].setPosition(21, 7);
-    _snake[2].setPosition(22, 7);
-    _snake[3].setPosition(23, 7);
-    _snake[4].setPosition(24, 7);
-    _snake[5].setPosition(25, 7);
+snake::snake() {
     _taille = 6;
 }
 
 // constructeur du serpent en recevant;
 snake::snake(int x, int y) {
-    _snake[0].setPosition(x, y);
-    _snake[1].setPosition(x + 1, y);
-    _snake[2].setPosition(x + 2, y);
-    _snake[3].setPosition(x + 3, y);
-    _snake[4].setPosition(x + 4, y);
-    _snake[5].setPosition(x + 5, y);
+    initialize(x, y);
     _taille = 6;
 }
 
@@ -33,27 +21,27 @@ snake::~snake() {
 
 //	Initialise le serpent
 void snake::initialize(int x, int y) {
-    _snake[0].setPosition(x, y);
-    _snake[1].setPosition(x + 1, y);
-    _snake[2].setPosition(x + 2, y);
-    _snake[3].setPosition(x + 3, y);
-    _snake[4].setPosition(x + 4, y);
-    _snake[5].setPosition(x + 5, y);
+    assert(x >= 0 && y >= 0);
     _taille = 6;
+    for (int i = 0; i < _taille; ++i) {
+        _snake[i].setPosition(x + i, y);
+        _snake[i].setColor(6);
+    }
 }
 
 // Renvoie la tête du serpent
-const point& snake::getHeadPosition() const {
+const point &snake::getHeadPosition() const {
     return _snake[0];
 }
 
 // renvoie la position du serpent
-const point& snake::getPosition(int ind) const {
+const point &snake::getPosition(int ind) const {
+    assert(ind >= 0 && ind < _taille);
     return _snake[ind];
 }
 
 // operator pour aller chercher la position du serpent
-const point& snake::operator[](int ind) const {
+const point &snake::operator[](int ind) const {
     return getPosition(ind);
 }
 
@@ -64,28 +52,29 @@ int snake::getTaille() const {
 
 //	Donne la nouvelle position de la tête du serpent;
 point snake::nouvellePosition(int dir) {
+    assert(dir >= 1 && dir <= 4);
     point newHead = _snake[0];
 
     switch (dir) {
-    case 1:
-        newHead.setX(newHead.getX() - 1);
-        break;
-    case 2:
-        newHead.setX(newHead.getX() + 1);
-        break;
-    case 3:
-        newHead.setY(newHead.getY() - 1);
-        break;
-    case 4:
-        newHead.setY(newHead.getY() + 1);
-        break;
+        case 1:
+            newHead.setX(newHead.getX() - 1);
+            break;
+        case 2:
+            newHead.setX(newHead.getX() + 1);
+            break;
+        case 3:
+            newHead.setY(newHead.getY() - 1);
+            break;
+        case 4:
+            newHead.setY(newHead.getY() + 1);
+            break;
     }
     return newHead;
 }
 
 //	Méthode collision du serpent;
-bool snake::ifCollision(const point& pos) const {
-    
+bool snake::ifCollision(const point &pos) const {
+
     for (int i = 0; i < _taille; i++) {
 
         if (pos == _snake[i]) {
@@ -117,19 +106,22 @@ void snake::eat(int dir) {
 }
 
 //	Operator draw;
-void snake::draw(ostream& output) const {
-    
+void snake::draw(ostream &output) const {
+
     for (int i = 0; i < _taille; i++) {
-        gotoxy(_snake[i].getX(), _snake[i].getY());
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
-        output << "\xFE";
+        _snake[i].draw(cout);
+//        gotoxy(_snake[i].getX(), _snake[i].getY());
+//        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+//        output << "\xFE";
     }
+
     gotoxy(_snake[_taille - 1].getX(), _snake[_taille - 1].getY());
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
     output << "\xFE";
 }
 
 //	Operator cout;
-ostream& operator<<(ostream& output, const snake& s) {
+ostream &operator<<(ostream &output, const snake &s) {
+    s.draw(cout);
     return output;
 }
